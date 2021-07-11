@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Tmdb::Movie.detail(params[:id])
     @reviews = Review.where(movie_id: params[:id]).page(params[:page]).per(8)
+    @total_reviews = Review.where(movie_id: params[:id])
     @goods_count = Good.where(movie_id: params[:id]).count
     @bads_count = Bad.where(movie_id: params[:id]).count
   end

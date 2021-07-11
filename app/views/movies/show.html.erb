@@ -46,7 +46,7 @@
             starHalf: '<%= asset_path('star-half.png') %>',
             half: true,
             readOnly: true,
-            score: <%= @reviews.average(:rate).to_f.round(1) %>,
+            score: <%= @total_reviews.average(:rate).to_f.round(1) %>,
             //scoreName: 'review[rate]'
           });
         });
