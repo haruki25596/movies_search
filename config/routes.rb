@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:new, :create, :update, :edit, :destroy] do
-    resource :post_comments, only: [:create, :destroy]
+    resources :review_comments, only: [:new, :create, :destroy]
   end
 
 

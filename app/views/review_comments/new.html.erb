@@ -1,0 +1,43 @@
+<div class="containar">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">画像投稿フォーム</h5>
+      <div class="form-body p-4">
+        <% if @review_comment.errors.any? %>
+          <%= @review_comment.errors.count %>件のエラーが発生しました
+          <% @review_comment.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+        <%= form_with model: @review_comment, local:true do |f| %>
+          <%= f.attachment_field :image, class: "w-100" %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
+            </div>
+          <%= f.text_area :comment, class:"form-control", rows:"3", placeholder:"コメントここに" %>
+          <hr>
+          <%= f.submit '投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card-list-containar py-5">
+  <% review_comments.each do |review_comment| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= attachment_image_tag review_comment.user, :image, :fill, 60, 60, fallback: "no_profile_image.jpg", class:"mt-3 rounded-circle"; %>
+        </div>
+        <div class="col-10">
+          <p class="card-text">説明：<%= review_comment.comment %></p>
+          <span><i class="fas fa-user"></i> By <%= review_comment.user.name %> ｜ </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%#= paginate post_images %>
+</div>

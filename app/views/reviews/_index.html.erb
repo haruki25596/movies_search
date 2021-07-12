@@ -1,24 +1,19 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-12'>
-      <table class='table'>
-        <thead>
-          <tr>
-            <h3>投稿された感想・評価</h3>
-          </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
-            <tr>
-              <td>
-                <%= link_to user_path(review.user.id) do %>
-                  <%= attachment_image_tag review.user, :image, size: "100x100", fallback: "no_profile_image.jpg", class:"mt-3 rounded-circle"  %>
-                  <br><%= review.user.name %></br>
-                <% end %>
-              </td>
-              <td width="500"><%= review.body %></td>
-              <td>
-                <div id="star-rate-<%= review.id %>"></div>
+<div class="card-list-containar py-5">
+  <% @reviews.each do |review| %>
+  <div class="card w-100 mx-auto mt-4 shadow-lg">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= attachment_image_tag review.user, :image, :fill, 60, 60, fallback: "no_profile_image.jpg", class:"mt-3 rounded-circle"; %>
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <strong><i class="far fa-flag"></i><span> <%= review.title %></span></strong>
+            評価：<%= review.rate %>点
+          </p>
+          <div id="star-rate-<%= review.id %>"></div>
                   <script>
                   $('#star-rate-<%= review.id %>').raty({
                     size: 36,
@@ -32,25 +27,25 @@
                   });
                   </script>
                   <style>
-                    td img {
+                    #star-rate-<%= @movie.id %> img {
                       width: 20px;
                       height: 20px;
                     }
                   </style>
-              </td>
-              <td>
-                評価：<%= review.rate %>点
-                <br><%= review.title %></br>
-              </td>
-              <td>
-                <% if current_user == review.user %>
-                  <%= link_to '削除', review, method: :delete, class:'badge badge-danger', data: { confirm: '削除しますか？' } %>
-                <% end %>
-              </td>
+          <p class="card-text"><%= review.body %></p>
+          <span><i class="fas fa-user"></i>
+            <%= link_to user_path(review.user.id) do %>
+              By <%= review.user.name %> ｜
+              <% end %>
+          </span>
+          <span><%= link_to "#{review.review_comments.count} コメント", new_review_review_comment_path(review.id), class:"text-dark" %></span>
+          <% if current_user == review.user %>
+            <%= link_to '削除', review, method: :delete, class:'badge badge-danger', data: { confirm: '削除しますか？' } %>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   </div>
-  <%= paginate @reviews %>
+  <% end %>
+  <%#= paginate @reviews %>
 </div>

@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   has_many :interests, dependent: :destroy
+  
+  has_many :review_comments, dependent: :destroy
+  has_many :review_favorites, dependent: :destroy
 
   has_many :goods
   has_many :bads
