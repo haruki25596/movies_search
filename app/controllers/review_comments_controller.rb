@@ -2,7 +2,8 @@ class ReviewCommentsController < ApplicationController
 
   def new
     @review_comment = ReviewComment.new
-    @review_comments = ReviewComment.all
+    @review_comments = ReviewComment.where(review_id: params[:review_id])
+    @review = Review.find(params[:review_id])
   end
 
   def create
@@ -10,7 +11,7 @@ class ReviewCommentsController < ApplicationController
     comment = current_user.review_comments.new(review_comment_params)
     comment.review_id = review.id
     comment.save
-    redirect_to new_review_review_comments_path(review)
+    redirect_to new_review_review_comment_path(review)
   end
 
   def destroy
