@@ -16,7 +16,7 @@ class ReviewCommentsController < ApplicationController
 
   def destroy
     ReviewComment.find_by(id: params[:id], review_id: params[:review_id]).destroy
-    redirect_to new_review_review_comments_path(params[:review_id])
+    redirect_to new_review_review_comment_path(params[:review_id])
   end
 
   private

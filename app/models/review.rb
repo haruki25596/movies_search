@@ -2,9 +2,15 @@ class Review < ApplicationRecord
 
   belongs_to :user
   
+  has_many :notifications, dependent: :destroy
+  
   has_many :review_comments, dependent: :destroy
   
-  has_many :notifications, dependent: :destroy
+  has_many :review_favorites, dependent: :destroy
+
+  def review_favorited_by?(user)
+    review_favorites.where(user_id: user.id).exists?
+  end
 
 
   # goodsの中に、引数で渡されたuserのidを持つレコードがあるかの判定をする
