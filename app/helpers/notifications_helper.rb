@@ -9,7 +9,7 @@ module NotificationsHelper
       when "review_favorite" then
         "#{visitor}が#{your_post}にいいね！しました"
       when "review_comment" then
-        @comment=ReviewComment.find_by(id:notification.review_comment_id)&.content
+        @comment=ReviewComment.find_by(id:notification.review_comment_id)&.comment
         "#{visitor}が#{your_post}にコメントしました"
     end
   end
