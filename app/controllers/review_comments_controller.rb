@@ -12,7 +12,7 @@ class ReviewCommentsController < ApplicationController
     comment.review_id = review.id
     @review = comment.review
     comment.save
-    @review.create_notification_review_comment!(current_user.id, review.user_id, review.id)
+    @review.create_notification_review_comment!(current_user, review.user_id, review.id)
     redirect_to new_review_review_comment_path(review)
   end
 

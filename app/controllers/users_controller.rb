@@ -2,6 +2,16 @@ class UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page]).per(8)
+    # @users.id
+    # @users.email
+    # user = User.find(1) # クラスメソッド
+    # user.xxx() # インスタンスメソッド
+    # User.xxx() # クラスメソッド
+    # @users.id
+    # @users.xxx() # クラスメソッド
+    # @users.each do |user|
+    #   user.xxx() # インスタンスメソッド
+    # end
   end
 
   def show
