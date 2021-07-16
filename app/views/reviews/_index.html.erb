@@ -34,18 +34,20 @@
               </p>
               <p class="card-text"><%= review.body %></p>
               <span>
-                <% if review.review_favorited_by?(current_user) %>
-                  <p>
-                    <%= link_to review_review_favorites_path(review), method: :delete do %>
-                      ♥<%= review.review_favorites.count %> いいね！
-                    <% end %>
-                  </p>
-                  <% else %>
-                  <p>
-                    <%= link_to review_review_favorites_path(review), method: :post do %>
-                      ♡<%= review.review_favorites.count %> いいね！
-                    <% end %>
-                  </p>
+                <% if user_signed_in? %>
+                  <% if review.review_favorited_by?(current_user) %>
+                    <p>
+                      <%= link_to review_review_favorites_path(review), method: :delete do %>
+                        ♥<%= review.review_favorites.count %> いいね！
+                      <% end %>
+                    </p>
+                    <% else %>
+                    <p>
+                      <%= link_to review_review_favorites_path(review), method: :post do %>
+                        ♡<%= review.review_favorites.count %> いいね！
+                      <% end %>
+                    </p>
+                  <% end %>
                 <% end %>
               </span>
               <span><i class="fas fa-user"></i>
