@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+before_action :authenticate_user!
 
   def new
     @movie_id = params[:movie_id]

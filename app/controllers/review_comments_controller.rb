@@ -1,4 +1,5 @@
 class ReviewCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @review_comment = ReviewComment.new

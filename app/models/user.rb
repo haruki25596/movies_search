@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   has_many :interests, dependent: :destroy
-  
+
   has_many :review_comments, dependent: :destroy
   has_many :review_favorites, dependent: :destroy
 
@@ -37,17 +37,14 @@ class User < ApplicationRecord
     bads.where(movie_id: movie_id).exists?
   end
 
-  #ユーザーをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
 
-  #ユーザーのフォローを外す
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
 
-  #フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
   end
