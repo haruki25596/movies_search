@@ -15,12 +15,12 @@ class Review < ApplicationRecord
 
   # goodsの中に、引数で渡されたuserのidを持つレコードがあるかの判定をする
   def good_by?(user)
-    goods.where(user_id: user.id).exists? # exists?の方がいいかも
+    goods.where(user_id: user.id).exists? 
   end
 
   # badsの中に、引数で渡されたuserのidを持つレコードがあるかの判定をする
   def bad_by?(user)
-    bads.where(user_id: user.id).exists? # exists?の方がいいかも
+    bads.where(user_id: user.id).exists? 
   end
 
   validates :body, length: { maximum: 2000 }
