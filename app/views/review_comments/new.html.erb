@@ -60,9 +60,6 @@
                     <% end %>
                 </span>
                 <span><%= link_to "#{@review.review_comments.count} コメント", new_review_review_comment_path(@review.id), class:"text-dark" %></span>
-                <% if current_user == @review.user %>
-                  <%= link_to '削除', @review, method: :delete, class:'badge badge-danger', data: { confirm: '削除しますか？' } %>
-                <% end %>
               </div>
             </div>
           </div>
