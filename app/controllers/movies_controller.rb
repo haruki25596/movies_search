@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :redirect_root, except: [:index, :show, :search]
 
   require 'themoviedb-api'
-  Tmdb::Api.key(ENV['TMBD_KEY'])
+  Tmdb::Api.key(ENV['TMDB_KEY'])
   Tmdb::Api.language("ja") # 映画情報の表示の際の言語設定を日本語にできる
 
   def index
