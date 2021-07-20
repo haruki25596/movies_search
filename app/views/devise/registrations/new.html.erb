@@ -14,29 +14,24 @@
       <%= f.label :name, "氏名(半角英数字, 10文字以内)" %><br />
       <%= f.text_field :name, autocomplete: "name", placeholder: "(例)tarou" %>
     </div>
-
     <div class="field form-group">
       <%= f.label :email, "Email" %><br />
       <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "(例)tarou@example.com" %>
     </div>
-
     <div class="field form-group">
       <% if @minimum_password_length %>
         <%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
-
     <div class="field form-group">
       <%= f.label :password_confirmation, "パスワード(確認)" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
-
     <div class="field form-group">
       <%= f.label :introduction, "自己紹介(任意)" %><br />
       <%= f.text_area :introduction, style:"width: 40%; height: 100px;", placeholder: "(例)みなさん初めまして。趣味は映画鑑賞です。" %>
     </div>
-
     <div class="field form-group has-icon">
       <div>プロフィール画像(任意)</div>
       <div class="user-edit-image">
@@ -45,7 +40,6 @@
       <label class="control-label sr-only", for="inputEmail">ProfileImage</label>
       <%= f.attachment_field :image, placeholder: "プロフィール画像", class: "user-edit-form", onchange: "previewFile()" %>
     </div>
-
     <div class="actions">
       <%= f.submit "登録する", class:"btn btn-success" %>
     </div>
