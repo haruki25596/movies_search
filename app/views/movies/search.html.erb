@@ -9,27 +9,25 @@
                 <% end %>
                 <%# 検索された時にコンテンツを表示する %>
                 <%if params[:keyword].present? %>
-                    <% movieinfo = JSON.parse((Tmdb::Search.movie(params[:keyword])).to_json) %>
+                    <% @tmdbs = JSON.parse((Tmdb::Search.movie(params[:keyword])).to_json) %>
                     <h2><%= params[:keyword] %>の検索結果</h2>
-                    <% i = 0 %>
                     <div class="card-wrapper">
-                        <% while i < movieinfo['table']['results'].count %>
+                        <% @tmdbs['table']['results'].each do |tmdb| %>
                             <div class="card">
-                                <% if movieinfo['table']['results'][i]['table']['poster_path'].present? %>
-                                    <div><%= image_tag 'https://image.tmdb.org/t/p/w1280' + movieinfo['table']['results'][i]['table']['poster_path'],class: "card-img" %></div>
+                                <% if tmdb['table']['poster_path'].present? %>
+                                    <div><%= image_tag 'https://image.tmdb.org/t/p/w1280' + tmdb['table']['poster_path'],class: "card-img" %></div>
                                 <%end%>
 
                                 <div class="card-upperinfo">
-                                    <%if movieinfo['table']['results'][i]['table']['title'].present?%>
-                                        <h3><%= link_to movieinfo['table']['results'][i]['table']['title'],movie_path(movieinfo['table']['results'][i]['table']['id']) %></h3>
+                                    <%if tmdb['table']['title'].present?%>
+                                        <h3><%= link_to tmdb['table']['title'],movie_path(tmdb['table']['id']) %></h3>
                                     <%end%>
 
-                                    <% if movieinfo['table']['results'][i]['table']['release_date'].present? %>
-                                        <div class="release-date"><%= movieinfo['table']['results'][i]['table']['release_date'] %></div>
+                                    <% if tmdb['table']['release_date'].present? %>
+                                        <div class="release-date"><%= tmdb['table']['release_date'] %></div>
                                     <%end%>
                                 </div>
                             </div>
-                        <% i += 1%>
                         <%end%>
                     </div>
                 <%else%>
