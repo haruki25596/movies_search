@@ -7,6 +7,10 @@ class Review < ApplicationRecord
   has_many :review_comments, dependent: :destroy
 
   has_many :review_favorites, dependent: :destroy
+  
+  def set_date
+    created_at.strftime("%Y年%m月%d日%H時%M分")
+  end
 
   def review_favorited_by?(user)
     review_favorites.where(user_id: user.id).exists?

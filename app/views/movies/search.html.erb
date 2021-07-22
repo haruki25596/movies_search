@@ -9,7 +9,6 @@
                 <% end %>
                 <%# 検索された時にコンテンツを表示する %>
                 <%if params[:keyword].present? %>
-                    <% @tmdbs = JSON.parse((Tmdb::Search.movie(params[:keyword])).to_json) %>
                     <h2><%= params[:keyword] %>の検索結果</h2>
                     <div class="card-wrapper">
                         <% @tmdbs['table']['results'].each do |tmdb| %>
@@ -31,7 +30,6 @@
                 <% else %>
                 <%# 検索されていない時にトレンドコンテンツを表示する %>
                 <h2>本日の世界のトレンド</h2>
-                    <% @tmdbs = JSON.parse((Tmdb::Movie.popular).to_json) %>
                     <div class="card-wrapper">
                         <% @tmdbs['table']['results'].each do |tmdb| %>
                             <div class="card">

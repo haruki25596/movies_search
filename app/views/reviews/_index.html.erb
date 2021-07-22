@@ -9,8 +9,9 @@
               <%= attachment_image_tag review.user, :image, :fill, 60, 60, fallback: "no_profile_image.jpg", class:"mt-3 rounded-circle"; %>
             </div>
             <div class="col-10">
+              <span><%= review.set_date %></span>
               <p class="card-title">
-                <strong><i class="far fa-flag"></i><span> <%= review.title %></span></strong>
+                <strong><i class="far fa-flag"></i><span><%= review.title %></span></strong>
                 評価：<%= review.rate %>点
                 <div id="star-rate-<%= review.id %>"></div>
                   <script>

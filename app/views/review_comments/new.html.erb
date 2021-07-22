@@ -15,6 +15,7 @@
                 <%= attachment_image_tag @review.user, :image, :fill, 60, 60, fallback: "no_profile_image.jpg", class:"mt-3 rounded-circle"; %>
               </div>
               <div class="col-10">
+                <span><%= @review.set_date %></span>
                 <p class="card-title">
                   <strong><i class="far fa-flag"></i><span> <%= @review.title %></span></strong>
                   評価：<%= @review.rate %>点
@@ -87,6 +88,7 @@
           <%= attachment_image_tag review_comment.user, :image, :fill, 60, 60, fallback: "no_profile_image.jpg", class:"mt-3 rounded-circle"; %>
         </div>
         <div class="col-10">
+          <span><%= review_comment.set_date %></span>
           <p class="card-text">説明：<%= review_comment.comment %></p>
           <span><i class="fas fa-user"></i> By <%= review_comment.user.name %> ｜ </span>
           <% if current_user == review_comment.user %>
