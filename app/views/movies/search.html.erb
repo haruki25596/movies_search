@@ -17,12 +17,10 @@
                                 <% if tmdb['table']['poster_path'].present? %>
                                     <div><%= image_tag 'https://image.tmdb.org/t/p/w1280' + tmdb['table']['poster_path'],class: "card-img" %></div>
                                 <%end%>
-
                                 <div class="card-upperinfo">
                                     <%if tmdb['table']['title'].present?%>
                                         <h3><%= link_to tmdb['table']['title'],movie_path(tmdb['table']['id']) %></h3>
                                     <%end%>
-
                                     <% if tmdb['table']['release_date'].present? %>
                                         <div class="release-date"><%= tmdb['table']['release_date'] %></div>
                                     <%end%>
@@ -44,7 +42,6 @@
                                     <%if tmdb['table']['title'].present?%>
                                         <h3><%= link_to tmdb['table']['title'], movie_path(tmdb['table']['id'])%></h3>
                                     <%end%>
-
                                     <% if tmdb['table']['release_date'].present? %>
                                         <div class="release-date"><%= tmdb['table']['release_date'] %></div>
                                     <%end%>
