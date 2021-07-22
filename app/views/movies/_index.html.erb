@@ -1,21 +1,19 @@
 <div class="row">
-  <% i = 0 %>
-  <% while i < @tmdbs['table']['results'].count %>
+  <% @tmdbs['table']['results'].each do |tmdb| %>
     <div class="col-2">
       <div class="card">
-        <% if @tmdbs['table']['results'][i]['table']['poster_path'].present? %>
-          <p><%= image_tag 'https://image.tmdb.org/t/p/w1280' + @tmdbs['table']['results'][i]['table']['poster_path'],class: "card-img" %></p>
+        <% if tmdb['table']['poster_path'].present? %>
+          <p><%= image_tag 'https://image.tmdb.org/t/p/w1280' + tmdb['table']['poster_path'],class: "card-img" %></p>
         <%end%>
         <div class="card-upperinfo">
-          <%if @tmdbs['table']['results'][i]['table']['title'].present?%>
-            <p><%= link_to @tmdbs['table']['results'][i]['table']['title'],movie_path(@tmdbs['table']['results'][i]['table']['id']),data: {"turbolinks"=>false} %></p>
+          <%if tmdb['table']['title'].present?%>
+            <p><%= link_to tmdb['table']['title'],movie_path(tmdb['table']['id']),data: {"turbolinks"=>false} %></p>
           <%end%>
-          <% if @tmdbs['table']['results'][i]['table']['release_date'].present? %>
-            <p class="release-date"><%= @tmdbs['table']['results'][i]['table']['release_date'] %></p>
+          <% if tmdb['table']['release_date'].present? %>
+            <p class="release-date"><%= tmdb['table']['release_date'] %></p>
           <%end%>
         </div>
       </div>
     </div>
-    <% i += 1%>
   <%end%>
- </div>
+</div>
