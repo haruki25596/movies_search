@@ -16,19 +16,19 @@
                             <div class="card">
                                 <% if tmdb['table']['poster_path'].present? %>
                                     <div><%= image_tag 'https://image.tmdb.org/t/p/w1280' + tmdb['table']['poster_path'],class: "card-img" %></div>
-                                <%end%>
+                                <% end %>
                                 <div class="card-upperinfo">
-                                    <%if tmdb['table']['title'].present?%>
+                                    <% if tmdb['table']['title'].present?%>
                                         <h3><%= link_to tmdb['table']['title'],movie_path(tmdb['table']['id']) %></h3>
-                                    <%end%>
+                                    <% end %>
                                     <% if tmdb['table']['release_date'].present? %>
                                         <div class="release-date"><%= tmdb['table']['release_date'] %></div>
-                                    <%end%>
+                                    <% end %>
                                 </div>
                             </div>
-                        <%end%>
+                        <% end %>
                     </div>
-                <%else%>
+                <% else %>
                 <%# 検索されていない時にトレンドコンテンツを表示する %>
                 <h2>本日の世界のトレンド</h2>
                     <% @tmdbs = JSON.parse((Tmdb::Movie.popular).to_json) %>
@@ -37,19 +37,19 @@
                             <div class="card">
                                 <% if tmdb['table']['poster_path'].present? %>
                                     <div><%= image_tag 'https://image.tmdb.org/t/p/w1280' + tmdb['table']['poster_path'],class: "card-img" %></div>
-                                <%end%>
+                                <% end %>
                                 <div class="card-upperinfo">
-                                    <%if tmdb['table']['title'].present?%>
+                                    <% if tmdb['table']['title'].present?%>
                                         <h3><%= link_to tmdb['table']['title'], movie_path(tmdb['table']['id'])%></h3>
-                                    <%end%>
+                                    <% end %>
                                     <% if tmdb['table']['release_date'].present? %>
                                         <div class="release-date"><%= tmdb['table']['release_date'] %></div>
-                                    <%end%>
+                                    <% end %>
                                 </div>
                             </div>
-                        <%end%>
+                        <% end %>
                     </div>
-                <%end%>
+                <% end %>
             </div>
         </div>
     </div>
