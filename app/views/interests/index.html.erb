@@ -1,29 +1,29 @@
 <!--<h2>気になる作品リスト</h2>-->
 <% if @interests.exists? %>
 <table class="table">
- <thead>
-  <tr>
-   <th>気になる作品リスト</th>
-  </tr>
- </thead>
- <tbody>
+  <thead>
+    <tr>
+      <th>気になる作品リスト</th>
+    </tr>
+   </thead>
+  <tbody>
   <% @interests.each do |interest| %>
-   <tr>
-      <td>
-         <a><%= image_tag 'https://image.tmdb.org/t/p/w1280' + interest.poster_path,class: "icon-img", size: "150x150" %></a>
-      </td>
-      <td>
-          <%= interest.title %>
-      </td>
-      <td>
-          <%= link_to "気になるリストから削除", movie_interests_path(interest.movie_id), class:"btn btn-info btn-sm mr-2", method: :delete, data: { confirm: '気になるリストから削除してもよろしいですか？' } %>
-      </td>
-      <td>
-          <%= link_to "この作品の詳細を見る", movie_path(interest.movie_id) %>
-      </td>
-   </tr>
-  <% end %>
- </tbody>
+     <tr>
+        <td>
+           <a><%= image_tag 'https://image.tmdb.org/t/p/w1280' + interest.poster_path,class: "icon-img", size: "150x150" %></a>
+        </td>
+        <td>
+            <%= interest.title %>
+        </td>
+        <td>
+            <%= link_to "気になるリストから削除", movie_interests_path(interest.movie_id), class:"btn btn-info btn-sm mr-2", method: :delete, data: { confirm: '気になるリストから削除してもよろしいですか？' } %>
+        </td>
+        <td>
+            <%= link_to "この作品の詳細を見る", movie_path(interest.movie_id) %>
+        </td>
+     </tr>
+    <% end %>
+   </tbody>
 </table>
 <% else %>
   <p>気になるリストに追加した映画はありません</p>
