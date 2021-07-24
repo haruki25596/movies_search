@@ -47,7 +47,6 @@
             half: true,
             readOnly: true,
             score: <%= @total_reviews.average(:rate).to_f.round(1) %>,
-            //scoreName: 'review[rate]'
           });
         });
       </script>
