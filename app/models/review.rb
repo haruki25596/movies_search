@@ -5,7 +5,6 @@ class Review < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   has_many :review_comments, dependent: :destroy
-
   has_many :review_favorites, dependent: :destroy
   
   def set_date
