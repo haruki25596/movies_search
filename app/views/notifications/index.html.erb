@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <!--自分の投稿に対するいいね、コメントは通知に表示しない-->
         <h3 class="text-center">通知</h3>
-            <%= link_to destroy_all_notifications_path, method: :delete, data: { confirm: 'メッセージをすべて削除しますか？' } do %>
+            <%= link_to destroy_all_notifications_path, method: :delete, data: { confirm: '本当にメッセージをすべて削除しますか？' } do %>
                 <i class="fas fa-trash" style="color: black;"></i>
                 <h6 style="color: black;">全削除</h6>
             <% end %>
