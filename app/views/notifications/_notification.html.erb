@@ -1,5 +1,6 @@
 <% visiter = notification.visitor %>
 <% review = notification.review %>
+
 <div class="user-view clearfix ">
   <%= link_to user_path(notification.visitor) do %>
     <a class="mt-3 rounded-circle"><%= attachment_image_tag(notification.visitor, :image, size: "70x70", fallback: "no_profile_image.jpg") %></a>
