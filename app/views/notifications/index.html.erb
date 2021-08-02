@@ -9,7 +9,7 @@
             <hr>
         <% if @notifications.exists? %>
             <div class="users-index">
-            <%= render @notifications %>
+                <%= render @notifications %>
                 <%= paginate @notifications %>
             </div>
         <% else %>
